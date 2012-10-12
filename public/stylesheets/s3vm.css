@@ -1,0 +1,108 @@
+html
+{
+	font-family:"Helvetica","Arial","Sans-serif";
+	font-size:0.9em;
+	color:#444444;
+}
+
+body
+{
+	padding:15px;
+}
+
+.text-input
+{
+	border-radius:.25em;
+	padding:5px;
+	outline:none;
+	border:1px #444444 solid;
+	width:300px;
+}
+
+.version-input
+{
+	width:50px;
+}
+
+.hr 
+{
+	background-color: #555;
+	border: 0px solid #000000;
+	height: 1px;
+	margin-top:25px;
+	margin-bottom:25px;
+}
+
+.content-banner
+{
+	width:90%;
+	padding:10px;
+	padding-top:1px;
+	padding-bottom:1px;
+	background-color:#efefef;
+	border-radius:0.5em 0.5em 0em 0em;
+}
+
+.action-banner
+{
+	width:90%;
+	padding:10px;
+	padding-top:7px;
+	padding-bottom:7px;
+	background-color:#99CCFF;
+	border-radius:0em 0em 0.5em 0.5em;
+}
+
+.file-banner
+{
+	width:90%;
+	padding:10px;
+	padding-top:2px;
+	padding-bottom:2px;
+	background-color:#99CCFF;
+	border-radius:0.5em 0.5em 0.0em 0.0em;
+}
+
+.file-table
+{
+	width:92%;
+	border:collapse;
+}
+
+.file-table th
+{
+	background-color:#eee;
+	color:#555;
+	height:25px;
+	vertical-align:middle;
+	border:none;
+}
+
+.file-table tr:nth-child(odd) { background:#eee; }
+.file-table tr:nth-child(even) { background:#fff; }
+
+.file-table td
+{
+	padding:10px;
+	margin:0px;
+	vertical-align:middle;
+}
+
+.centered
+{
+	text-align:center;
+}
+
+.latest
+{
+	background-color:lightgreen;
+}
+
+.flash
+{
+	width:90%;
+	border-radius:0.25em;
+	background-color:#99CCFF; 
+	border: 0px solid #1560b5;
+	padding: 5px;
+}

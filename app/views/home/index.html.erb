@@ -1,0 +1,14 @@
+<div class="content-banner">
+<h3>Please enter your S3 login information</h3>
+</div>
+<div class="action-banner">
+<%= form_tag({ :controller => :home, :action => :login }, :method=>'post') do %>
+  <%= label_tag "access_key", "Access Key" %><br/>
+  <%= text_field_tag "access_key", "", :class => "text-input" %>
+  <br/><br/>
+  <%= label_tag "secret_key", "Secret Key" %><br/>
+  <%= text_field_tag "secret_key", "", :class => "text-input" %>
+  <br/><br/>
+  <%= submit_tag "Login" %>
+<% end %>
+</div>

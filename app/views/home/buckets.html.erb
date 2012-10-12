@@ -1,0 +1,8 @@
+<div class="content-banner">
+<h3>Choose a Bucket</h3>
+</div>
+<div class="action-banner">
+<% @buckets.each do |b| %>
+  <p><%= link_to b, { :controller => :home, :action => :bucket, :name => b } %></p>
+<% end %>
+</div>

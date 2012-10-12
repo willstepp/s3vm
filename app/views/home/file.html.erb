@@ -1,0 +1,38 @@
+<% if !@parent.nil? %>
+<%= link_to "Back", { :controller => :home, :action => :bucket, :name => @bucket, :path => @parent } %>
+<% end %>
+<br/><br/>
+<div class="file-banner">
+<h3>File: /<%= @file.key %></h3>
+<h4>Versions: <%= @versions.count %></h4>
+</div>
+<table class="file-table">
+  <tr>
+  <th>Last Modified</th>
+  <th>Size</th>
+  <th>Download</th>
+  <th>Restore</th>
+  </tr>
+<% @versions.each do |v| %>
+  <% if !v.delete_marker? %>
+  <tr class="<%= v.latest? ? 'latest' : '' %>">
+    <td class="<%= v.latest? ? 'latest' : '' %>">
+      <%= "#{v.head.last_modified.strftime("%a %b %d  %H:%M:%S  %Z %z  %Y")}" %>
+    </td>
+    <td class="centered">
+      <%= "#{v.head.content_length} bytes" %>
+    </td>
+    <td class="centered">
+      <%= link_to "Download", { :controller => :home, :action => :download, :bucket => @bucket, :version_id => v.version_id, :key => @file.key } %>
+    </td>
+    <td class="centered">
+    <% if !v.latest? %>
+      <%= link_to "Restore", { :controller => :home, :action => :restore, :bucket => @bucket, :version_id => v.version_id, :key => @file.key } %>
+    <% else %>
+      <%= "--" %>
+    <% end %>
+  </td>
+  </tr>
+  <% end %>
+<% end %>
+</table>

@@ -1,0 +1,44 @@
+<div>
+<%= link_to "Logout", logout_path %>&nbsp;
+<%= link_to "Buckets", { :controller => :home, :action => :buckets } %>
+</div>
+<br/>
+<div class="content-banner">
+<h3><%= "Bucket: #{@bucket.name}" %></h3>
+<h4><%= "Path: /#{@path}" %></h4>
+</div>
+<div class="action-banner">
+  <span>
+  <%= form_tag({ :controller => :home, :action => :mass_restore }, :method=>'post') do %>
+    <%= label_tag "mr_versions", "Restore this folder" %>
+    <%= text_field_tag "mr_versions", "1", :class => "text-input version-input" %>
+    <%= label_tag "mr_versions", "version(s)" %>
+    <%= submit_tag "Restore Now", :id => "restore-tag" %>
+    <span id="progress-tag">&nbsp;<%= image_tag image_path("bar_progress.gif") %></span>
+    <%= hidden_field_tag "mr_path", @path %>
+    <%= hidden_field_tag "mr_bucket", @bucket.name %>
+    <span style="float:right;padding-top:5px"><%= link_to "Download archive of this folder", { :controller => :home, :action => :archive, :bucket => @bucket.name, :path => @path } %></span>
+  <% end %>
+  </span>
+
+</div>
+<div>
+<% if !@parent.nil? %>
+<%= link_to "..", { :controller => :home, :action => :bucket, :name => @bucket.name, :path => @parent } %>
+<% end %>
+<% @dirs.each do |d| %>
+  <p><%= image_tag image_path("folder_icon.png"), :style => "vertical-align:top" %>&nbsp;<%= link_to File.basename(d), { :controller => :home, :action => :bucket, :name => @bucket.name, :path => d } %></p>
+<% end %>
+<% @files.each do |f| %>
+  <p><%= image_tag image_path("file_icon.png"), :style => "vertical-align:top" %>&nbsp;<%= link_to File.basename(f), { :controller => :home, :action => :file, :bucket => @bucket.name, :name => f } %></p>
+<% end %>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){
+      $("#progress-tag").hide();
+      $("#restore-tag").click(function(){
+          $(this).hide();
+          $("#progress-tag").show();
+      });
+  });
+</script>
